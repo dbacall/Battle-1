@@ -13,7 +13,16 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require_relative '../app'
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
+
+Capybara.app = Battle
+
 RSpec.configure do |config|
+
+  ENV['RACK-ENV'] = 'test'
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
