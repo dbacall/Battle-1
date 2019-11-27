@@ -1,8 +1,11 @@
 require_relative '../app.rb'
 
 describe 'homepage', type: :feature do
-  it 'returns a message' do
+  it 'enter player names and see it on screen' do
     visit '/'
-    expect(page).to have_content 'Testing infrastructure working!'
+    fill_in 'Player 1', with: 'Nancy'
+    fill_in 'Player 2', with: 'Greg'
+    click_on 'FIGHT!'
+    expect(page).to have_content('Nancy VS Greg')
   end
 end
