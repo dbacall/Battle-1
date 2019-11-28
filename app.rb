@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './lib/player'
 
 class Battle < Sinatra::Base
 enable :sessions # Stores all data in a cookie
@@ -8,22 +9,22 @@ enable :sessions # Stores all data in a cookie
   end
 
   post '/names' do
-    session[:player1] = params['Player 1'] # Stores the player(s) in the session
-    session[:player2] = params['Player 2']
+    $player1 = Player.new(params[:player1]) # Stores the player(s) in the session
+    $player2 = Player.new(params[:player2])
 
     redirect '/battle'
   end
 
   get '/battle' do
-    @player1 = session[:player1]
-    @player2 = session[:player2]
+    @player1 = $player1.name
+    @player2 = $player2.name
 
     erb :battle
   end
 
   get '/attack' do
-    @player1 = session[:player1]
-    @player2 = session[:player2]
+    @player1 = $player1.name
+    @player2 = $player2.name
 
     erb :attack
   end
