@@ -17,6 +17,15 @@ enable :sessions # Stores all data in a cookie
   get '/battle' do
     @player1 = session[:player1]
     @player2 = session[:player2]
+
     erb :battle
   end
+
+  get '/attack' do
+    @player1 = session[:player1]
+    @player2 = session[:player2]
+
+    erb :attack
+  end
+
 end
