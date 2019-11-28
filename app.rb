@@ -1,14 +1,14 @@
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
-enable :sessions
+enable :sessions # Stores all data in a cookie
 
   get '/' do
     erb :index
   end
 
   post '/names' do
-    session[:player1] = params['Player 1']
+    session[:player1] = params['Player 1'] # Stores the player(s) in the session
     session[:player2] = params['Player 2']
 
     redirect '/battle'
