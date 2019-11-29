@@ -16,9 +16,10 @@ enable :sessions # Stores all data in a cookie
   end
 
   get '/battle' do
+    
     @player1 = $player1.name
     @player2 = $player2.name
-
+    @HP = $player2.HP
     erb :battle
   end
 
@@ -28,5 +29,13 @@ enable :sessions # Stores all data in a cookie
 
     erb :attack
   end
+
+  get '/next-move' do
+    @player1 = $player1.name
+    @player2 = $player2.name
+    $player2.deduct
+    @HP = $player2.HP
+    erb :battle
+  end 
 
 end
