@@ -9,14 +9,13 @@ enable :sessions # Stores all data in a cookie
   end
 
   post '/names' do
-    $player1 = Player.new(params[:player1]) # Stores the player(s) in the session
+    $player1 = Player.new(params[:player1])
     $player2 = Player.new(params[:player2])
 
     redirect '/battle'
   end
 
   get '/battle' do
-    
     @player1 = $player1.name
     @player2 = $player2.name
     @HP = $player2.HP
@@ -26,7 +25,6 @@ enable :sessions # Stores all data in a cookie
   get '/attack' do
     @player1 = $player1.name
     @player2 = $player2.name
-
     erb :attack
   end
 
